@@ -42,7 +42,7 @@ When(/^Кликнуть Бонус$/, async () => {
 });
 
 Then(/^Бонус на ДР отображается$/, async () => {
-    await expect(new Bonuses().BonusesNames.BonusHb).toHaveText('ПОДАРОК НА ДЕНЬ РОЖДЕНИЯ ДО 500 €')
+    await expect(new Bonuses().BonusesNames.BonusHb).toHaveText('ПОДАРОК НА ДЕНЬ РОЖДЕНИЯ ДО 20 000 ₽')
 });
 
 When(/^Кликнуть Лотереи$/, async () => {
@@ -83,12 +83,16 @@ When(/^Ввести пароль$/, async () => {
     (await new Login().InputFields.Password).setValue(TestData.Password)
 });
 
+When(/^Кликнуть Войти$/, async () => {
+    await new Login().Buttons.Login.click()
+});
+
 Then(/^Пользователь успешно авторизован и кнопка Депозит отображается$/, async () => {
     await expect(new NavigationMenu().Buttons.UserName).toBeClickable();
 });
 
 Then(/^Статус пользователя New$/, async () => {
-    await expect(new NavigationMenu().Elements.Status).toHaveText('New');
+    await expect(new NavigationMenu().Elements.Status).toHaveText('СТАТУС: NEW');
 });
 
 When(/^Кликнуть на имя пользователя$/, async () => {
